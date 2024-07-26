@@ -14,24 +14,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    //@Bean memberService -> new MemoryMemberRepository()
-    //@Bean orderService -> new MemoryMemberRepository()
-    //@Bean memberRepository -> new MemoryMemberRepository()
-    // 위의 3개의 Bean을 호출했을 때 new 키워드로 MemoryMemberRepository()가 3번 호출되는데,
-    // 싱글톤이 깨지는 것이 아닌가? 하는 합리적인 의심을 해볼 수 있겠다.
-
-    //예상한 출력 결과
-    //call AppConfig.memberService
-    //call AppConfig.memberRepository
-    //call AppConfig.memberRepository
-    //call AppConfig.orderService
-    //call AppConfig.memberRepository
-
-    //실제 출력 결과
-    //call AppConfig.memberService
-    //call AppConfig.memberRepository
-    //call AppConfig.orderService
-
     @Bean
     public MemberService memberService() {
         System.out.println("call AppConfig.memberService");
